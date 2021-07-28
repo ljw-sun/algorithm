@@ -9,10 +9,16 @@ public class SingleLinkedListDemo {
 
     public static void main(String[] args) {
         HeroNode head = new HeroNode(1,"222","dddd");
-        HeroNode head1 = new HeroNode(1,"333","ddddfff");
+        HeroNode head2 = new HeroNode(3,"333","ddddfff");
+        HeroNode head3 = new HeroNode(2,"333","ddddfff");
+        HeroNode head4 = new HeroNode(4,"333","ddddfff");
         SingleLinkedList singleLinkedList = new SingleLinkedList();
-        singleLinkedList.add(head);
-        singleLinkedList.add(head1);
+//        singleLinkedList.add(head);
+//        singleLinkedList.add(head1);
+        singleLinkedList.addByOrder(head);
+        singleLinkedList.addByOrder(head2);
+        singleLinkedList.addByOrder(head4);
+        singleLinkedList.addByOrder(head3);
         singleLinkedList.list();
 
     }
@@ -43,6 +49,34 @@ class SingleLinkedList{
         //当退出while循环时，temp就指向了链表的最后
         //将最后这个节点的next 指向新的节点
         temp.next = heroNode;
+    }
+
+    //第二种方式在添加英雄的时候，根据排名将英雄插入到指定位置
+    //如果有这个排名了，则添加失败，并给出提示
+    public void addByOrder(HeroNode heroNode){
+
+        //老规矩 头节点不能动，创建辅助指针变量，找到添加的位置
+        HeroNode temp = head;
+        boolean flag = false;
+        while (true){
+            if (temp.next == null){  //如果成立则说明已经到了链表的最后了
+                break;
+            }
+            //属于按值插入  单链表 单，插入第i个位置，就找i+1结点，插后面，双，前后都行
+            if (temp.next.no > heroNode.no){
+                break;
+            }else if (temp.next.no == heroNode.no){
+                flag = true;
+                break;
+            }
+            temp = temp.next; //后移 ，继续遍历当前链表
+        }
+        if (flag){
+            System.out.println("编号已经存在");
+        }else {
+            heroNode.next = temp.next;
+            temp.next = heroNode;
+        }
     }
 
     //显示链表【遍历】
