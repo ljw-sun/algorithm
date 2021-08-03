@@ -12,6 +12,7 @@ public class SingleLinkedListDemo {
         HeroNode head2 = new HeroNode(3,"333","ddddfff");
         HeroNode head3 = new HeroNode(2,"333","ddddfff");
         HeroNode head4 = new HeroNode(4,"333","ddddfff");
+        HeroNode head5 = new HeroNode(1,"777","888");
         SingleLinkedList singleLinkedList = new SingleLinkedList();
 //        singleLinkedList.add(head);
 //        singleLinkedList.add(head1);
@@ -20,6 +21,9 @@ public class SingleLinkedListDemo {
         singleLinkedList.addByOrder(head4);
         singleLinkedList.addByOrder(head3);
         singleLinkedList.list();
+        singleLinkedList.update(head5);
+        singleLinkedList.list();
+
 
     }
 }
@@ -78,6 +82,40 @@ class SingleLinkedList{
             temp.next = heroNode;
         }
     }
+
+    //修改链表 自己写法
+    public void update(HeroNode heroNode){
+
+        if (head.next == null){
+            System.out.println("链表为空");
+            return;
+        }
+
+        //辅助变量
+        HeroNode temp = head.next;
+        boolean flag= false;
+        while (true){
+            if (temp == null){
+                break;
+            }
+            if (temp.no == heroNode.no){
+                flag = true;
+                temp.name = heroNode.name;
+                temp.nickname = heroNode.nickname;
+                break;
+            }
+            temp = temp.next;
+        }
+        if (flag){
+            System.out.println("修改成功");
+        }else {
+            System.out.println("未找到失败");
+        }
+
+    }
+
+
+
 
     //显示链表【遍历】
     public void list(){
