@@ -1,4 +1,4 @@
-package net.ljw.基础算法;
+package net.ljw.基础算法.数组;
 
 /**
  * @author LIJW
