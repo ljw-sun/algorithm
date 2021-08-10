@@ -23,6 +23,8 @@ public class SingleLinkedListDemo {
         singleLinkedList.list();
         singleLinkedList.update(head5);
         singleLinkedList.list();
+        singleLinkedList.delete(1);
+        singleLinkedList.list();
 
 
     }
@@ -114,6 +116,28 @@ class SingleLinkedList{
 
     }
 
+
+    //删除链表 自己写法
+    public void delete(int nodeInt){
+       HeroNode temp = head;
+       boolean flag = false;
+       while (true){
+           if (temp.next == null){
+               break;
+           }
+           if (temp.next.no == nodeInt){
+               temp.next = temp.next.next;
+               flag = true;
+           }
+           temp = temp.next;
+       }
+
+       if (flag){
+           System.out.println("删除成功");
+       }else {
+           System.out.println("删除失败");
+       }
+    }
 
 
 
