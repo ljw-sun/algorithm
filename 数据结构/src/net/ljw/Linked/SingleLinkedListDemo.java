@@ -3,7 +3,7 @@ package net.ljw.Linked;
 /**
  * @author LIJW
  * @date 2021/7/22 4:57 下午
- * 单链表的学习 单纯的链表添加和显示
+ * 单链表的学习 单纯的链表添加和显示 删除 修改
  */
 public class SingleLinkedListDemo {
 
